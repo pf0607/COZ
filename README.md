@@ -1,2 +1,2 @@
 # COZ-dataset
-Our dataset is available at xxxxxx.
+Our dataset will be released soon.
