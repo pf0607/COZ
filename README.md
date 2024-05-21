@@ -1,6 +1,6 @@
 ## Continuous Optical Zooming Dataset
 
-Our dataset is availble at 
+Our dataset is availble at [COZ - Google 云端硬盘](https://drive.google.com/drive/folders/196vQw7Y6aLnoEsRYDV3MOETL7YU9HrDQ).
 
 ## Local Mix Implicit Network for Arbitrary-Scale Image Super-Resolution (LMI)
 
@@ -30,10 +30,10 @@ Download our dataset and unzip it in the current directory.
 
 We use NVIDIA RTX 3090 24GB for training, and NVIDIA A40 48GB for testing.
 
-### Citation
-
-If you find our work useful in your research, please consider citing our paper:
-
 ### Acknowledgements
 
 This code is built on [LIIF](https://github.com/yinboc/liif) and [LTE](https://github.com/jaewon-lee-b/lte).  We thank the authors for sharing their codes.
+
+## Citation
+
+If you find our work useful in your research, please consider citing our paper:
