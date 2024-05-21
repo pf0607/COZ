@@ -1,0 +1,64 @@
+train_dataset:
+  dataset:
+    name: paired-real-image-folders-random
+    args:
+      root_path_1: ./data/train_LR
+      repeat: 20
+      cache: none
+      # first_k: 10
+  wrapper:
+    name: sr-implicit-float-paired-test
+    args:
+      inp_size: 48
+      augment: true
+      sample_q: 2304
+  batch_size: 16
+
+val_dataset:
+  dataset:
+    name: paired-real-image-folders-test
+    args:
+      # first_k: 10
+      repeat: 100
+      root_path_1: ./data/test_LR
+      root_path_2: ./data/test_HR
+      cache: none
+  wrapper:
+    name: sr-implicit-float-paired-test
+    args: 
+        inp_size: 48
+        sample_q: 2304
+  batch_size: 16
+
+eval_scale: [2]
+# eval_bsize: 30000
+
+
+data_norm:
+  inp: {sub: [0.5], div: [0.5]}
+  gt: {sub: [0.5], div: [0.5]}
+
+model:
+  name: lmi
+  args:
+    encoder_spec:
+      name: edsr-baseline
+      args:
+        no_upsampling: true
+    imnet_spec:
+      name: mixer-all-no_norm-sr64-localE
+      args:
+        depth: 1
+        out_dim: 3
+
+optimizer:
+  name: adam
+  args:
+    lr: 1.e-4
+epoch_max: 300
+multi_step_lr:
+  milestones: [100, 200]
+  gamma: 0.5
+
+epoch_val: 1
+epoch_save: 50
