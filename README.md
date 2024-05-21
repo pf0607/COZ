@@ -1,18 +1,14 @@
-## Continuous Optical Zooming：A Benchmark for Arbitrary-Scale Image Super-Resolution in Real World
+## Continuous Optical Zooming Dataset
 
-Our dataset is availble at
+Our dataset is availble at 
 
-## Local Mix Implicit Network for Arbitrary-Scale Image Super-Resolution
+## Local Mix Implicit Network for Arbitrary-Scale Image Super-Resolution (LMI)
 
-Official PyTorch implementation of Local Mix Implicit Network for Arbitrary-Scale Image Super-Resolution.
+Official PyTorch implementation of LMI network.
 
 ### Installation
 
 Our code is based on Ubuntu 20.04, pytorch 1.11.0, CUDA 11.3 (NVIDIA RTX 3090 24GB, NVIDIA A40 48GB) and python 3.8.
-
-### Note
-
-We have hidden the core code for now, and this part of the code will be made public after the paper is accepted.
 
 ### Train & Test
 
