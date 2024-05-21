@@ -1,6 +1,6 @@
 ## Continuous Optical Zooming Dataset
 
-Our dataset is availble at 
+Our dataset is availble at https://drive.google.com/drive/folders/196vQw7Y6aLnoEsRYDV3MOETL7YU9HrDQ.
 
 ## Local Mix Implicit Network for Arbitrary-Scale Image Super-Resolution (LMI)
 
