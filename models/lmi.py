@@ -22,13 +22,7 @@ class LMI(nn.Module):
 
         if imnet_spec is not None:
             imnet_in_dim = self.encoder.out_dim
-            # if self.feat_unfold:
-            #     imnet_in_dim *= 9
-            # imnet_in_dim += 2 # attach coord
-            # if self.cell_decode:
-            #     imnet_in_dim += 2
-            # if with_area:
-            #     imnet_in_dim += 1
+
             self.imnet = models.make(imnet_spec, args={'dim': imnet_in_dim, 'num_patch': 16})
         else:
             self.imnet = None
@@ -52,10 +46,6 @@ class LMI(nn.Module):
         feat = self.feat
         feat_rgb = self.inp        
 
-        # if self.feat_unfold:    # [B,9*64,48,48]
-        #     feat = F.unfold(feat, 3, padding=1).view(
-        #         feat.shape[0], feat.shape[1] * 9, feat.shape[2], feat.shape[3])
-
         if self.local_ensemble:
             vx_lst = [-3, -1, 1, 3]
             vy_lst = [-3, -1, 1, 3]
@@ -63,16 +53,13 @@ class LMI(nn.Module):
         else:
             vx_lst, vy_lst, eps_shift = [0], [0], 0
 
-        # field radius (global: [-1, 1])
         rx = 2 / feat.shape[-2] / 2
         ry = 2 / feat.shape[-1] / 2
 
         feat_coord = make_coord(feat.shape[-2:], flatten=False).cuda() \
             .permute(2, 0, 1) \
             .unsqueeze(0).expand(feat.shape[0], 2, *feat.shape[-2:])
-        # [B,2,48,48]
 
-        # preds = []
         areas = []
         inps = []
         rel_coords = []
@@ -103,8 +90,6 @@ class LMI(nn.Module):
                 rel_coord[:, :, 0] *= feat.shape[-2]
                 rel_coord[:, :, 1] *= feat.shape[-1]
 
-                # inp = torch.cat([q_feat, rel_coord], dim=-1)
-
                 inps.append(q_feat.unsqueeze(2))
                 rel_coords.append(rel_coord.unsqueeze(2))
 
@@ -120,9 +105,6 @@ class LMI(nn.Module):
         meta_mix = self.metanet(meta_inp.view(bs*q,-1))
 
         inp = torch.cat(inps, dim=2)
-        # print(inp.shape)
-        # for inp, area in zip(inps, areas):
-        #     area /= tot_area
 
         rel_cell = rel_cell.view(bs*q,1,-1).repeat(1,16,1)
         rel_coord = torch.cat(rel_coords[0:16],dim=2)
@@ -136,7 +118,7 @@ class LMI(nn.Module):
         if self.local_ensemble:
             for i in range(8):
                 t = areas[i]; areas[i] = areas[15-i]; areas[15-i] = t
-            # t = areas[1]; areas[1] = areas[2]; areas[2] = t
+
         ret = 0
         for pred, area in zip(preds, areas):
             ret = ret + pred.squeeze(2) * (area / tot_area).unsqueeze(-1)
