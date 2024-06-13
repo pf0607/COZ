@@ -46,10 +46,11 @@ model:
       args:
         no_upsampling: true
     imnet_spec:
-      name: mixer-all-no_norm-sr64-localE
+      name: MLP-mixer-all-no_norm-sr64-localE
       args:
         depth: 1
         out_dim: 3
+        hidden_list: [256]
 
 optimizer:
   name: adam
