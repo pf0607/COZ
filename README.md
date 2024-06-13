@@ -16,7 +16,7 @@ Download our dataset and unzip it in the current directory.
 
 ### Train & Test
 
-##### **EDSR-baseline-LMI**
+##### **EDSR-Baseline-LMI**
 
 **Train**: `python train_real.py --config configs/train-real/lmi-edsr-baseline.yaml`
 
@@ -29,6 +29,12 @@ Download our dataset and unzip it in the current directory.
 **Test**: `python test_real.py --config configs/test/test-RealAbrSR.yaml --model save/LMI-rdn/epoch-best.pth`
 
 We use NVIDIA RTX 3090 24GB for training, and NVIDIA A40 48GB for testing.
+
+### Pretrained Checkpoints
+
+**[EDSR-Baseline-LMI](https://drive.google.com/file/d/1-18tDJduD3sqYVOBPhu19YnJaHDkOiGr/view?usp=drive_link)**
+
+**[RDN-LMI](https://drive.google.com/file/d/1-1iASRRn604jwgzxOy7NHdjX_EQ7L3L-/view?usp=drive_link)**
 
 ### Acknowledgements
 
