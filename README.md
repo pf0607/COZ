@@ -37,3 +37,14 @@ This code is built on [LIIF](https://github.com/yinboc/liif) and [LTE](https://g
 ## Citation
 
 If you find our work useful in your research, please consider citing our paper:
+
+> ```
+> @InProceedings{Fu_2024_CVPR,
+>     author    = {Fu, Huiyuan and Peng, Fei and Li, Xianwei and Li, Yejun and Wang, Xin and Ma, Huadong},
+>     title     = {Continuous Optical Zooming: A Benchmark for Arbitrary-Scale Image Super-Resolution in Real World},
+>     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+>     month     = {June},
+>     year      = {2024},
+>     pages     = {3035-3044}
+> }
+> ```
