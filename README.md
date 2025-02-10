@@ -2,6 +2,9 @@
 
 Our dataset is availble at [COZ - Google Drive](https://drive.google.com/drive/folders/196vQw7Y6aLnoEsRYDV3MOETL7YU9HrDQ).
 
+Supplementary training data for COZ V2 version is now released: [COZv2_add - Google Drive](https://drive.google.com/file/d/1Fbg67YVdwOpv-T1cWqpAwtrw-b6d5iw4/view?usp=sharing)
+
+
 ## Local Mix Implicit Network for Arbitrary-Scale Image Super-Resolution (LMI)
 
 Official PyTorch implementation of LMI network.
